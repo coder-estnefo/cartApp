@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Items</ion-title>
+    <ion-buttons slot="end" (click)="goToCart()">
+      <ion-button>
+        <ion-icon name="cart-outline"></ion-icon>
+        <ion-badge>{{count}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngFor="let current_item of items">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+        <ion-card-title>{{current_item.name}}</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+  
+          <ion-button color="primary" expand="block" (click)="addItem(current_item)">
+            <ion-icon name="add-circle-outline"></ion-icon>
+            Add
+          </ion-button>
+          <ion-button color="primary" expand="block" (click)="removeItem(current_item)">
+            <ion-icon name="trash-outline"></ion-icon>
+            Remove
+          </ion-button>
+        
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>
