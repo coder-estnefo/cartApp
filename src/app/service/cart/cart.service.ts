@@ -15,26 +15,31 @@ export class CartService {
 
   addToCart(item) {
     if (this.cartList.length == 0) {
-        this.cartList.push({"itemNo": item.itemNo,'name': item.name, 'quantity': item.quantity});
+        this.cartList.push({'name': item.name, 'quantity': item.quantity});
     } else {
         let i;
         for (i = 0; i < this.cartList.length; i++) {
           if (item.name == this.cartList[i]['name']) {
               let quantity = this.cartList[i]['quantity'];
-              this.cartList.splice(i, 1, {"itemitemNo": item.itemitemNo,'name': item.name, 'quantity': quantity + 1});
+              this.cartList.splice(i, 1, {'name': item.name, 'quantity': quantity + 1});
               break;
           }
         }
 
         if(i == this.cartList.length) {
-          this.cartList.push({"itemitemNo": item.itemitemNo,'name': item.name, 'quantity': item.quantity});
+          this.cartList.push({'name': item.name, 'quantity': item.quantity});
         }
     }
     
   }
 
   removeFromCart(item) {
-    this.cartList.splice(this.cartList.indexOf(item),1);
+    for (let i = 0; i < this.cartList.length; i++) {
+      if (item.name == this.cartList[i]['name']) {
+        this.cartList.splice(i, 1);
+        break;
+      }
+    }
   }
 
   removeOneItem(item) {
@@ -45,7 +50,7 @@ export class CartService {
               this.cartList.splice(i, 1);
               break;
           } else {
-              this.cartList.splice(i, 1, {"itemNo": item.itemNo,'name': item.name, 'quantity': quantity - 1});
+              this.cartList.splice(i, 1, {'name': item.name, 'quantity': quantity - 1});
               break;
           }
       }
