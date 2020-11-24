@@ -17,7 +17,6 @@ export class CartService {
     let found = false;
     if (this.cartList.length == 0) {
         this.cartList.push({"itemNo": item.itemNo,'name': item.name, 'quantity': item.quantity});
-        console.log('1');
     } else {
         let i;
         for (i = 0; i < this.cartList.length; i++) {
@@ -31,17 +30,13 @@ export class CartService {
 
         if(i == this.cartList.length) {
           this.cartList.push({"itemitemNo": item.itemitemNo,'name': item.name, 'quantity': item.quantity});
-          console.log('2');
         }
     }
-
-    console.log(this.cartList);
     
   }
 
   removeFromCart(item) {
     this.cartList.splice(this.cartList.indexOf(item),1);
-    console.log(this.cartList);
   }
 
   removeOneItem(item) {
@@ -58,7 +53,6 @@ export class CartService {
       }
     }
 
-    console.log(this.cartList);
   }
 
   getCartCount() {
@@ -66,7 +60,7 @@ export class CartService {
     for (let i = 0; i < this.cartList.length; i++) {
       total += this.cartList[i]['quantity'];
     }
-
+    
     return total;
   }
 

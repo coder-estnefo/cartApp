@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/service/cart/cart.service';
 import { ITEMS } from 'src/mocks/item.mock';
-import { Item } from 'src/modal/item';
 
 @Component({
   selector: 'app-items',
@@ -13,7 +12,6 @@ export class ItemsPage implements OnInit {
 
   items = ITEMS;
   count;
-  cart;
 
   constructor(
     private cartService: CartService,
