@@ -20,6 +20,7 @@ export class ItemsPage implements OnInit {
 
   ngOnInit() {
     this.count = this.cartService.getCartCount();
+    
   }
 
   addItem(item) {
