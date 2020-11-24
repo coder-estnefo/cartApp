@@ -20,17 +20,17 @@ export class ItemsPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.count = this.cartService.getCartItems().length;
+    this.count = this.cartService.getCartCount();
   }
 
   addItem(item) {
     this.cartService.addToCart(item);
-    this.count = this.cartService.getCartItems().length;
+    this.count = this.cartService.getCartCount();
   }
 
   removeItem(item) {
     this.cartService.removeFromCart(item);
-    this.count = this.cartService.getCartItems().length;
+    this.count = this.cartService.getCartCount();
   }
 
   goToCart() {

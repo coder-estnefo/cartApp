@@ -15,7 +15,22 @@ export class CartPage implements OnInit {
 
   ngOnInit() {
     this.cart = this.cartService.getCartItems();
-    this.count = this.cartService.getCartItems().length;
+    this.count = this.cartService.getCartCount();
+  }
+
+  addItem(item) {
+    this.cartService.addToCart(item);
+    this.count = this.cartService.getCartCount();
+  }
+
+  removeOneItem(item) {
+    this.cartService.removeOneItem(item);
+    this.count = this.cartService.getCartCount();
+  }
+
+  removeItem(item) {
+    this.cartService.removeFromCart(item);
+    this.count = this.cartService.getCartCount();
   }
 
 }

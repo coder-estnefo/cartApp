@@ -14,22 +14,60 @@ export class CartService {
   }
 
   addToCart(item) {
-    
-   /* for (let i = 0; i)
-
-    if (this.cartList.indexOf(item.name]) > -1) {
-      let index = this.cartList.indexOf(item.name);
-      let q = this.cartList[index]['quantity'] + 1;
-      this.cartList.splice(index, 1);
-      this.cartList.push({'name': item.name, 'quantity': q});
+    let found = false;
+    if (this.cartList.length == 0) {
+        this.cartList.push({"itemNo": item.itemNo,'name': item.name, 'quantity': item.quantity});
+        console.log('1');
     } else {
-      this.cartList.push({'name': item.name, 'quantity': item.quantity})
+        let i;
+        for (i = 0; i < this.cartList.length; i++) {
+          if (item.name == this.cartList[i]['name']) {
+              let quantity = this.cartList[i]['quantity'];
+              this.cartList.splice(i, 1, {"itemitemNo": item.itemitemNo,'name': item.name, 'quantity': quantity + 1});
+              found = true;
+              break;
+          }
+        }
+
+        if(i == this.cartList.length) {
+          this.cartList.push({"itemitemNo": item.itemitemNo,'name': item.name, 'quantity': item.quantity});
+          console.log('2');
+        }
     }
+
     console.log(this.cartList);
-    */
+    
   }
 
   removeFromCart(item) {
     this.cartList.splice(this.cartList.indexOf(item),1);
+    console.log(this.cartList);
   }
+
+  removeOneItem(item) {
+    for (let i = 0; i < this.cartList.length; i++) {
+      if (item.name == this.cartList[i]['name']) {
+          let quantity = this.cartList[i]['quantity'];
+          if (quantity == 1) {
+              this.cartList.splice(i, 1);
+              break;
+          } else {
+              this.cartList.splice(i, 1, {"itemNo": item.itemNo,'name': item.name, 'quantity': quantity - 1});
+              break;
+          }
+      }
+    }
+
+    console.log(this.cartList);
+  }
+
+  getCartCount() {
+    let total = 0;
+    for (let i = 0; i < this.cartList.length; i++) {
+      total += this.cartList[i]['quantity'];
+    }
+
+    return total;
+  }
+
 }
