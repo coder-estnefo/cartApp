@@ -13,6 +13,7 @@ export class ItemsPage implements OnInit {
 
   items = ITEMS;
   count;
+  cart;
 
   constructor(
     private cartService: CartService,
