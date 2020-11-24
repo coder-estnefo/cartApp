@@ -14,7 +14,6 @@ export class CartService {
   }
 
   addToCart(item) {
-    let found = false;
     if (this.cartList.length == 0) {
         this.cartList.push({"itemNo": item.itemNo,'name': item.name, 'quantity': item.quantity});
     } else {
@@ -23,7 +22,6 @@ export class CartService {
           if (item.name == this.cartList[i]['name']) {
               let quantity = this.cartList[i]['quantity'];
               this.cartList.splice(i, 1, {"itemitemNo": item.itemitemNo,'name': item.name, 'quantity': quantity + 1});
-              found = true;
               break;
           }
         }
@@ -60,7 +58,7 @@ export class CartService {
     for (let i = 0; i < this.cartList.length; i++) {
       total += this.cartList[i]['quantity'];
     }
-    
+
     return total;
   }
 
