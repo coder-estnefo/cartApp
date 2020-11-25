@@ -14,7 +14,7 @@ export class ItemsPage implements OnInit {
   count;
 
   constructor(
-    private cartService: CartService,
+    public cartService: CartService,
     private router: Router
   ) { }
 
