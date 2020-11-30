@@ -21,7 +21,8 @@ export class CartService {
         for (i = 0; i < this.cartList.length; i++) {
           if (item.name == this.cartList[i]['name']) {
               let quantity = this.cartList[i]['quantity'];
-              this.cartList.splice(i, 1, {'name': item.name, 'quantity': quantity + 1});
+              //this.cartList.splice(i, 1, {'name': item.name, 'quantity': quantity + 1});
+              this.cartList[i]['quantity'] = quantity + 1;
               break;
           }
         }
@@ -50,7 +51,8 @@ export class CartService {
               this.cartList.splice(i, 1);
               break;
           } else {
-              this.cartList.splice(i, 1, {'name': item.name, 'quantity': quantity - 1});
+              //this.cartList.splice(i, 1, {'name': item.name, 'quantity': quantity - 1});
+              this.cartList[i]['quantity'] = quantity - 1;
               break;
           }
       }
